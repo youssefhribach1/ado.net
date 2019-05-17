@@ -1,0 +1,40 @@
+
+     Using System.Data.SqlClient;
+
+       
+--------first method-------------- 
+
+ 1- Sqlconnection connection=new Sqlconnection("data source=.; database=S7015xlw01 integrated security=SSPI OR TRUE ");
+ 2- Sqlconnection connection=new Sqlconnection("data source=.; database=S7015xlw01 integrated security=TRUE ");
+
+-------second method -------------- using user id and password
+
+ 1-Sqlconection connetion=new Sqlconnection("data source=.; database=stagiaire; User Id="pRgSwx"; Password="PsWd2019" integrated security=SSPI3");
+
+
+--------------------------------
+. : it's main we work with local database
+database : the name of your database
+--------------------------------
+
+------------- connection string in app.config --------------------
+
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <connectionStrings>
+        <add name="Test" connectionString="Data Source=.;Initial Catalog=stagiaire;Integrated Security=True" providerName="System.Data.SqlClient" />
+    </connectionStrings>
+
+</configuration>
+
+
+----------get connection from app.config-------------------------
+
+   static string connection =System.Configuration.ConfigurationManager.ConnectionStrings["tv101"].ConnectionString;
+        SqlConnection cn = new SqlConnection(connection);
+
+-------------test the connection Open or Close -------------------
+
+ messagebox.show("Connection State : "+connection.State.tostring());
+
+ 
